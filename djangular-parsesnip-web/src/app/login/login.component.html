@@ -1,0 +1,35 @@
+<mat-card class="example-card">
+    <mat-card-header>
+      <mat-card-title id="title">The Clover Corps.</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <!-- <p>Join the mission...explore the Universe</p> -->
+      <img mat-card-image src="../assets/tenor.gif" id="login-logo" />
+      
+      <mat-divider></mat-divider>
+    </mat-card-content>
+    <mat-card-actions>
+        <form class="example-form">  
+            <table class="example-full-width" cellspacing="0"><tr>
+              <td><mat-form-field class="example-full-width">
+                <mat-label>User Name</mat-label>
+                <input matInput name="usernameInput" [(ngModel)]="usernameInput">
+              </mat-form-field></td>
+              <td><mat-form-field class="example-full-width">
+                <mat-label>Password</mat-label>
+                <input matInput name="passwordInput" [(ngModel)]="passwordInput">
+              </mat-form-field></td>
+            </tr></table>
+            <div class="example-button-row">
+                <button mat-raised-button color="accent" (click)="login()">Login</button>
+                <span id="spacer"></span>
+                <button mat-raised-button color="accent" (click)="signUp()">Enlist</button>
+              </div>  
+        </form>        
+          <section>  
+          </section>
+    </mat-card-actions>
+    <mat-card-footer>
+      <mat-progress-bar mode="indeterminate" id="prgrs-bar"></mat-progress-bar>
+    </mat-card-footer>
+  </mat-card>
