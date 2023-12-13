@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {FormsModule} from '@angular/forms';
@@ -8,7 +8,7 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatButtonModule} from '@angular/material/button';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatCardModule} from '@angular/material/card';
-import { HttpErrorResponse } from '@angular/common/http';
+
 
 /**
  * @title Inputs in a form
@@ -26,16 +26,20 @@ export class LoginComponent implements OnInit {
     username : UserArray = [];
     usernameInput: string = "";
     passwordInput: string = "";
-    usernameSignUpForm: string = "";
-    passwordSignUpForm: string = "";
+
+  
+
 
   ngOnInit(): void {
+    const tst = document.getElementById("nav",) as HTMLObjectElement;
+    tst.style.visibility = 'hidden';
     this.getUser();
   }
 
   constructor(private loginService: LoginService) {}
 
   getUser() {
+    
     this.loginService.getUser().subscribe({
         next: (data) => {
           console.log(data);
@@ -47,6 +51,7 @@ export class LoginComponent implements OnInit {
       }
     )
   }
+
 
   login(){
     console.log("Inside [login()" + "]");
@@ -60,7 +65,7 @@ export class LoginComponent implements OnInit {
       if(this.username[i].username === this.usernameInput
         && this.username[i].password === this.passwordInput) {
           console.log("Welcome back " + this.username[i].username);
-          window.location.href = "/trivia";
+          window.location.href = "/dash";
           break;
         }
         else {
@@ -70,29 +75,25 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  signUp() {
+  enlist() {
+    window.location.href = "/enlist";
+  }
 
-    if(this.usernameInput === "" || this.passwordInput === "") {
-      console.log("Empty username...<" + this.usernameInput + ">");
-      console.log("Empty password...<" + this.passwordInput + ">");
-      alert("Please enter a username & password");
-    }
-    else {
-    console.log("Checking component data..." + this.usernameInput);
-    console.log("Checking component data..." + this.passwordInput);
-    //build our payload for new user: username, password
+
+  deleteUser() {
+   
     var jsonData = 
     {
       "username": this.usernameInput,
-      "password": this.passwordInput
+   
     }
-      this.loginService.createUser(jsonData).subscribe(
-      (payload) => {(jsonData = payload)},
+      this.loginService.deleteUser(jsonData).subscribe(
+      (payload) => {(jsonData = payload),     alert("Success, welcome to the Corps.")
+     
+    },
       (error) => {alert('username already exists')}
       
       );      
-    
+
     }
-    //window.location.href = "/signUp";
   }
-}

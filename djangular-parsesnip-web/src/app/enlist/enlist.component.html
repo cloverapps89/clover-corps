@@ -5,26 +5,29 @@
     <mat-card-content>
       <!-- <p>Join the mission...explore the Universe</p> -->
       <img mat-card-image src="../assets/tenor.gif" id="login-logo" />
-      
+      <mat-card-header>
+        <mat-card-title id="title">Registration Form</mat-card-title>
+      </mat-card-header>
       <mat-divider></mat-divider>
     </mat-card-content>
     <mat-card-actions>
         <form class="example-form">  
-            <table class="example-full-width" cellspacing="0"><tr>
+            <table class="example-full-width" cellspacing="0">
+                <tr>
               <td><mat-form-field class="example-full-width">
                 <mat-label>User Name</mat-label>
-                <input matInput name="usernameInput" [(ngModel)]="usernameInput">
+                <input matInput name="usernameInput" [(ngModel)]="usernameSignUpForm">
               </mat-form-field></td>
-              <td><mat-form-field class="example-full-width">
+            </tr>
+        <tr>
+            <td><mat-form-field class="example-full-width">
                 <mat-label>Password</mat-label>
-                <input matInput name="passwordInput" [(ngModel)]="passwordInput">
+                <input matInput name="passwordInput" [(ngModel)]="passwordSignUpForm">
               </mat-form-field></td>
-            </tr></table>
+        </tr>
+        </table>
             <div class="example-button-row">
-                <button mat-raised-button color="accent" (click)="login()">Login</button>
-                <span id="spacer"></span>
-                <button mat-raised-button color="accent" (click)="enlist()">Enlist</button>
-
+                <button mat-raised-button color="accent" (click)="register()">Register</button>
               </div>  
         </form>        
           <section>  

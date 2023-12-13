@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
+
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -11,9 +12,10 @@ import { MatToolbarModule } from '@angular/material/toolbar';
   styleUrl: './app.component.css',
   providers: [],
   
+  
 })
 export class AppComponent {
-  title = 'djangular-parsesnip-web';
+  title = 'clover-corps.';
 }
 
 
