@@ -15,4 +15,15 @@ export class TriviaService {
  getTrivia(): Observable<QuestionArray> {
    return this.http.get('http://127.0.0.1:8000/api/v1/questions/') as Observable<QuestionArray>;
  }
+
+ addCoins(): Observable<any> {
+  
+  var payLoad = 
+    {
+      "username": "clover",
+      "password": "clov",
+      "coin": 10
+    }
+  return this.http.put('http://127.0.0.1:8000/users/clover/', payLoad);
+ }
 }

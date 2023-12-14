@@ -54,25 +54,27 @@ export class LoginComponent implements OnInit {
 
 
   login(){
-    console.log("Inside [login()" + "]");
-    console.log("DB - Creds...username[" + this.username[0].username + "]");
-    console.log("DB - Creds...password[" + this.username[0].password + "]");
 
+    var bool_stopper = false;
+    console.log("Inside [login()" + "]");
     console.log("Input from form...username[" + this.usernameInput + "]");
     console.log("Input from form...password[" + this.passwordInput + "]");
     
     for(var i = 0; i < this.username.length; i++) {
       if(this.username[i].username === this.usernameInput
         && this.username[i].password === this.passwordInput) {
-          console.log("Welcome back " + this.username[i].username);
-          window.location.href = "/dash";
+          bool_stopper = true;
           break;
         }
-        else {
-          alert("Username & password incorrect.");
-          break;
-        }
+
     }
+
+    if(bool_stopper) {
+      console.log("Welcome back " + this.username[i].username);
+      window.location.href = "/dash";
+    }else {
+          alert("Username & password incorrect.");
+                }
   }
 
   enlist() {

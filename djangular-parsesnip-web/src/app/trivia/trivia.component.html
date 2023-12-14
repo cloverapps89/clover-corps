@@ -4,7 +4,7 @@
   <span><a href="/" style="color:#69f0ae;">Logout</a></span>
   </mat-toolbar> -->
   <div id="question-header" *ngIf="total !== 0">
-    <h3>Question {{ questionNumber  }}</h3>
+    <h3>Question {{ questionNumber + 1  }}</h3>
     <h3 class="score">Score: {{ correctAnswers }}/{{ questionNumber }}</h3>
   </div>
   <div id="question-container">
@@ -34,6 +34,13 @@
     <ng-template #quizComplete>
       <p>We're all out of questions!</p>
       <h3 class="score">Here is your final score: {{ correctAnswers }}/{{ questionNumber }}</h3>
+      <ng-container *ngIf="correctAnswers >= 0.8; else failed">
+        <button mat-flat-button color="primary" id="next-button" (click)="addCoins()">Collect coins!</button>
+      </ng-container>
+      <ng-template #failed>
+        <h3 class="score">You failed, please get better :D.</h3>
+        <button mat-flat-button color="primary" id="next-button" (click)="reloadTrivia()">Restart</button>
+      </ng-template>
     </ng-template>
   </div>
   

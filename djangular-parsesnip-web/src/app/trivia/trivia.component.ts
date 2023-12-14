@@ -43,7 +43,9 @@ export class TriviaComponent implements OnInit {
     this.triviaService.getTrivia().subscribe({
         next: (data) => {
           console.log(data);
-          this.triviaData = data;
+
+          //removes items from the list by 10.
+          this.triviaData = data.splice(0,10);
           this.getNextQuestion();
         },
         error: (error) => {
@@ -51,6 +53,17 @@ export class TriviaComponent implements OnInit {
         }
       }
     )
+  }
+
+  addCoins() {
+this.triviaService.addCoins().subscribe({
+
+  
+})
+  }
+
+  reloadTrivia() {
+    window.location.href = '/trivia';
   }
 
   getNextQuestion() {
@@ -73,17 +86,22 @@ export class TriviaComponent implements OnInit {
 
     if (this.answer) {
      
-      
+      this.questionNumber++;
       
       if (this.answer.is_correct) {
         this.correctAnswers++;
       }
     } 
-    this.questionNumber++;
+    
     console.log("Here is our starting Q #...<" + this.questionNumber + ">");
     this.answer = null;
     this.disableRadioButtons = false;
     this.disableNextButton = true;   
+    
+    if(this.total === 0){
+    this.correctAnswers = this.correctAnswers / this.questionNumber;
+    console.log("Your final score in % = " + this.correctAnswers);
+    }
   }
 
   getCorrectAnswer() {

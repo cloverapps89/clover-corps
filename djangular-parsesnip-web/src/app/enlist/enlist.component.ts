@@ -25,6 +25,8 @@ export class EnlistComponent {
   passwordSignUpForm: string = "";
 
   ngOnInit(): void {
+    const tst = document.getElementById("nav",) as HTMLObjectElement;
+    tst.style.visibility = 'hidden';
     this.getUser();
   }
   constructor(private loginService: LoginService) {}

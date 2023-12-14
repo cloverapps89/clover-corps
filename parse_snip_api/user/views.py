@@ -30,7 +30,7 @@ class UserViewSet(viewsets.ModelViewSet):
         # print(msg.split())
 
         obj = get_object_or_404(User, pk="clover")
-        data = serialize("json", [obj], fields=('username', 'password'))
+        data = serialize("json", [obj], fields=('username', 'password', 'coin'))
         return HttpResponse(data, content_type="application/json")
     
 
@@ -45,7 +45,7 @@ class UserViewSet(viewsets.ModelViewSet):
         #this works to delete
         obj = get_object_or_404(User,username=self.kwargs['username'])
         #obj.delete()
-        data = serialize("json", [obj], fields=('username', 'password'))
+        data = serialize("json", [obj], fields=('username', 'password', 'coin'))
         return HttpResponse(data, content_type="application/json")
         
         
